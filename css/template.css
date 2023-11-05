@@ -4,7 +4,7 @@
     --secondry-color: #2c4755;
     --section-padding: 60px;
     --section-background: #f6f6f6;
-    --main-duration: 0.5;
+    --main-duration: 0.5s;
 }
 
 /* end variblas */
@@ -84,6 +84,14 @@ body {
 
 .header {
     padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 7;
+    background-color: white;
+    box-shadow: 0 -14px 35px black;
+    width: 100%;
+    transition: var(--main-duration);
 }
 
 .header .logo {
@@ -101,15 +109,13 @@ body {
     position: relative;
 }
 
-.header .links:hover .icon span:nth-child(2) {
-    width: 100%;
-}
 
 .header .links .icon {
     width: 22px;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
+    cursor: pointer;
 }
 
 .header .links .icon span {
@@ -125,7 +131,7 @@ body {
 
 .header .links .icon span:nth-child(2) {
     width: 60%;
-    transition: --main-duration ease-out;
+    transition: var(--main-duration) ease-out;
 }
 
 .header .links .icon span:last-child {
@@ -138,11 +144,16 @@ body {
     padding: 0;
     position: absolute;
     right: 0;
-    min-width: 200px;
+    width: 200px;
     top: calc(100% + 15px);
     background-color: #DDD;
-    display: none;
+    display: block;
+    transition: all var(--main-duration);
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 0;
     z-index: 1;
+    border-radius: 6px;
 }
 
 .header .links ul::before {
@@ -160,7 +171,7 @@ body {
     display: block;
     text-decoration: none;
     padding: 15px;
-    transition: --main-duration;
+    transition: var(--main-duration);
     color: #5a5a5a;
 
 }
@@ -170,13 +181,11 @@ body {
     padding-left: 30px;
 }
 
-.header .links:hover ul {
-    display: block;
-}
 
 .landing {
     background-image: url(../images/landing.jpg);
     background-size: cover;
+    background-position-y: -170px;
     height: calc(100vh - 61px);
     position: relative;
 }
@@ -335,10 +344,22 @@ body {
     justify-content: center;
     background-color: white;
     padding: 20px;
+    transition: var(--main-duration);
 }
+
+.portfolio .pro .pro-cont:hover {
+    transform: translateY(-10px);
+}
+
 
 .portfolio .pro .pro-cont img {
     max-width: 100%;
+    transition: var(--main-duration);
+
+}
+
+.portfolio .pro .pro-cont:hover img {
+    transform: scale(1.1);
 }
 
 .portfolio .pro .pro-cont .info {
